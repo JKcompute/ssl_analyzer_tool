@@ -1,0 +1,614 @@
+[
+    {
+        "status": "COMPLETE",
+        "method": "POST",
+        "protocolVersion": "HTTP/1.1",
+        "scheme": "https",
+        "host": "mobile.eum-appdynamics.com",
+        "actualPort": 443,
+        "path": "/eumcollector/mobileMetrics",
+        "query": "version=2",
+        "tunnel": false,
+        "keptAlive": false,
+        "webSocket": false,
+        "remoteAddress": "mobile.eum-appdynamics.com/44.236.176.231",
+        "clientAddress": "/192.168.1.211",
+        "clientPort": 56694,
+        "times":
+        {
+            "start": "2025-05-07T15:08:21.187-05:00",
+            "requestBegin": "2025-05-07T15:08:22.056-05:00",
+            "requestComplete": "2025-05-07T15:08:22.056-05:00",
+            "responseBegin": "2025-05-07T15:08:22.150-05:00",
+            "end": "2025-05-07T15:08:22.156-05:00"
+        },
+        "durations":
+        {
+            "total": 808,
+            "dns": 243,
+            "connect": 9,
+            "ssl": 456,
+            "request": 0,
+            "response": 6,
+            "latency": 94
+        },
+        "speeds":
+        {
+            "overall": 24332,
+            "request": 0,
+            "response": 2914666
+        },
+        "totalSize": 19661,
+        "ssl":
+        {
+            "protocol": "TLSv1.2",
+            "cipherSuite": "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256"
+        },
+        "alpn":
+        {
+            "protocol": "http/1.1"
+        },
+        "request":
+        {
+            "sizes":
+            {
+                "handshake": 1354,
+                "headers": 596,
+                "body": 223
+            },
+            "mimeType": "application/json",
+            "charset": null,
+            "contentEncoding": "gzip",
+            "header":
+            {
+                "firstLine": "POST /eumcollector/mobileMetrics?version=2 HTTP/1.1",
+                "headers":
+                [
+                    {
+                        "name": "Host",
+                        "value": "mobile.eum-appdynamics.com"
+                    },
+                    {
+                        "name": "an",
+                        "value": "com.ActiveHealthManagement.aHealthiOS"
+                    },
+                    {
+                        "name": "User-Agent",
+                        "value": "ActiveHealth/668 CFNetwork/1568.100.1 Darwin/24.0.0"
+                    },
+                    {
+                        "name": "Content-Encoding",
+                        "value": "gzip"
+                    },
+                    {
+                        "name": "adrum_request_config",
+                        "value": "0"
+                    },
+                    {
+                        "name": "ADRUM_1",
+                        "value": "isMobile:true"
+                    },
+                    {
+                        "name": "mat",
+                        "value": "-1"
+                    },
+                    {
+                        "name": "di",
+                        "value": "F9656F21-C180-4689-A35C-7A4F80873A1C"
+                    },
+                    {
+                        "name": "Content-Length",
+                        "value": "223"
+                    },
+                    {
+                        "name": "Connection",
+                        "value": "keep-alive"
+                    },
+                    {
+                        "name": "osn",
+                        "value": "iOS"
+                    },
+                    {
+                        "name": "Accept-Language",
+                        "value": "en-US,en;q=0.9"
+                    },
+                    {
+                        "name": "ky",
+                        "value": "AD-AAB-AAD-JBE"
+                    },
+                    {
+                        "name": "ADRUM",
+                        "value": "isAjax:true"
+                    },
+                    {
+                        "name": "Accept",
+                        "value": "*/*"
+                    },
+                    {
+                        "name": "Content-Type",
+                        "value": "application/json"
+                    },
+                    {
+                        "name": "Accept-Encoding",
+                        "value": "gzip, deflate, br"
+                    },
+                    {
+                        "name": "cap",
+                        "value": "s:1,f:1"
+                    },
+                    {
+                        "name": "gzip",
+                        "value": "false"
+                    },
+                    {
+                        "name": "bid",
+                        "value": "e7ad9b4ac03332678c99f03ac06665cc"
+                    }
+                ]
+            },
+            "body":
+            {
+                "text": "[{\n  \"et\" : 1746648501190,\n  \"eut\" : 101120310,\n  \"ca\" : \"--\",\n  \"st\" : 1746648501190,\n  \"cf\" : \"0\",\n  \"osv\" : \"18.0\",\n  \"dmo\" : \"iPhone13,4\",\n  \"ct\" : \"wifi\",\n  \"mv\" : \"668\",\n  \"type\" : \"system-event\",\n  \"event\" : \"Agent Init\",\n  \"tm\" : \"1597\",\n  \"cc\" : \"6\",\n  \"ab\" : \"4415f84-dirty\",\n  \"sut\" : 101120310,\n  \"agv\" : \"2020.3.0\",\n  \"sessionCounter\" : -1,\n  \"ds\" : \"487144\",\n  \"av\" : \"4.7.4\"\n}]",
+                "charset": null,
+                "decoded": true
+            }
+        },
+        "response":
+        {
+            "status": 200,
+            "sizes":
+            {
+                "handshake": 16991,
+                "headers": 0,
+                "body": 497
+            },
+            "mimeType": "application/json",
+            "charset": null,
+            "contentEncoding": null,
+            "header":
+            {
+                "firstLine": "HTTP/1.1 200 OK",
+                "headers":
+                [
+                    {
+                        "name": "Date",
+                        "value": "Wed, 07 May 2025 20:08:22 GMT"
+                    },
+                    {
+                        "name": "Content-Type",
+                        "value": "application/json"
+                    },
+                    {
+                        "name": "Transfer-Encoding",
+                        "value": "chunked"
+                    },
+                    {
+                        "name": "adrum_0",
+                        "value": "clientRequestGUID:2a5d5779-5ff8-4fbf-aa62-81f9872154ec"
+                    },
+                    {
+                        "name": "adrum_1",
+                        "value": "globalAccountName:appdynamics_eee1d4f8-67a2-498e-a725-47e29803822e"
+                    },
+                    {
+                        "name": "adrum_2",
+                        "value": "btId:559464"
+                    },
+                    {
+                        "name": "adrum_3",
+                        "value": "btERT:0"
+                    },
+                    {
+                        "name": "adrum_4",
+                        "value": "btStart:1746648502193"
+                    },
+                    {
+                        "name": "cache-control",
+                        "value": "private, no-cache, no-store, must-revalidate, max-age=0, proxy-revalidate, s-maxage=0"
+                    },
+                    {
+                        "name": "expires",
+                        "value": "0"
+                    },
+                    {
+                        "name": "pragma",
+                        "value": "no-cache"
+                    },
+                    {
+                        "name": "vary",
+                        "value": "*"
+                    },
+                    {
+                        "name": "x-content-type-options",
+                        "value": "nosniff"
+                    },
+                    {
+                        "name": "strict-transport-security",
+                        "value": "max-age=31536010; includeSubDomains"
+                    },
+                    {
+                        "name": "access-control-allow-origin",
+                        "value": "*"
+                    },
+                    {
+                        "name": "access-control-allow-headers",
+                        "value": "origin, content-type, accept"
+                    },
+                    {
+                        "name": "x-envoy-upstream-service-time",
+                        "value": "0"
+                    },
+                    {
+                        "name": "server",
+                        "value": "envoy"
+                    },
+                    {
+                        "name": "Connection",
+                        "value": "keep-alive"
+                    }
+                ]
+            },
+            "body":
+            {
+                "text": "{\"mat\":\"{\\\"b\\\":1746126000000,\\\"m\\\":\\\"f\\\",\\\"v\\\":\\\"1\\\"}\",\"agentConfig\":{\"enableScreenshot\":false,\"screenshotUseCellular\":false,\"autoScreenshot\":false,\"enableSessionReplay\":false,\"timestamp\":1567080431164,\"enableFeatures\":[],\"anrThreshold\":3000,\"deviceMetricsConfigurations\":{\"enableMemory\":false,\"enableStorage\":false,\"enableBattery\":false,\"criticalMemoryThresholdPercentage\":90,\"criticalBatteryThresholdPercentage\":90,\"criticalStorageThresholdPercentage\":90,\"collectionFrequencyMins\":2}}}",
+                "charset": null
+            }
+        }
+    },
+    {
+        "status": "COMPLETE",
+        "method": "POST",
+        "protocolVersion": "HTTP/1.1",
+        "scheme": "https",
+        "host": "firebaseinstallations.googleapis.com",
+        "actualPort": 443,
+        "path": "/v1/projects/activehealth-f6a98/installations/",
+        "query": null,
+        "tunnel": false,
+        "keptAlive": false,
+        "webSocket": false,
+        "remoteAddress": "firebaseinstallations.googleapis.com/100.64.1.151",
+        "clientAddress": "/192.168.1.211",
+        "clientPort": 56695,
+        "times":
+        {
+            "start": "2025-05-07T15:08:21.244-05:00",
+            "requestBegin": "2025-05-07T15:08:21.951-05:00",
+            "requestComplete": "2025-05-07T15:08:21.975-05:00",
+            "responseBegin": "2025-05-07T15:08:21.976-05:00",
+            "end": "2025-05-07T15:08:22.082-05:00"
+        },
+        "durations":
+        {
+            "total": 591,
+            "dns": 115,
+            "connect": 42,
+            "ssl": 303,
+            "request": 24,
+            "response": 106,
+            "latency": 1
+        },
+        "speeds":
+        {
+            "overall": 41389,
+            "request": 89708,
+            "response": 210452
+        },
+        "totalSize": 24461,
+        "ssl":
+        {
+            "protocol": "TLSv1.2",
+            "cipherSuite": "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256"
+        },
+        "alpn":
+        {
+            "protocol": "h2"
+        },
+        "request":
+        {
+            "sizes":
+            {
+                "handshake": 1307,
+                "headers": 722,
+                "body": 124
+            },
+            "mimeType": "application/json",
+            "charset": null,
+            "contentEncoding": null,
+            "header":
+            {
+                "firstLine": "POST /v1/projects/activehealth-f6a98/installations/ HTTP/1.1",
+                "headers":
+                [
+                    {
+                        "name": "Host",
+                        "value": "firebaseinstallations.googleapis.com"
+                    },
+                    {
+                        "name": "ADRUM_1",
+                        "value": "isMobile:true"
+                    },
+                    {
+                        "name": "Accept",
+                        "value": "*/*"
+                    },
+                    {
+                        "name": "X-firebase-client",
+                        "value": "apple-platform/ios apple-sdk/21C52 fire-abt/3.3.0 fire-analytics/6.6.1 fire-fcm/4.5.0 fire-iid/4.4.0 fire-install/1.4.0 fire-ios/6.8.0 fire-rc/4.6.0 swift/true xcode/15C500b"
+                    },
+                    {
+                        "name": "X-Ios-Bundle-Identifier",
+                        "value": "com.ActiveHealthManagement.aHealthiOS"
+                    },
+                    {
+                        "name": "X-firebase-client-log-type",
+                        "value": "3"
+                    },
+                    {
+                        "name": "Accept-Encoding",
+                        "value": "gzip, deflate, br"
+                    },
+                    {
+                        "name": "X-Goog-Api-Key",
+                        "value": "AIzaSyB4_Hftm4xZLdiHQfxbYGI2vvr6UTzqhVY"
+                    },
+                    {
+                        "name": "Accept-Language",
+                        "value": "en-US,en;q=0.9"
+                    },
+                    {
+                        "name": "Content-Type",
+                        "value": "application/json"
+                    },
+                    {
+                        "name": "Content-Length",
+                        "value": "124"
+                    },
+                    {
+                        "name": "User-Agent",
+                        "value": "ActiveHealth/668 CFNetwork/1568.100.1 Darwin/24.0.0"
+                    },
+                    {
+                        "name": "Connection",
+                        "value": "keep-alive"
+                    },
+                    {
+                        "name": "ADRUM",
+                        "value": "isAjax:true"
+                    }
+                ]
+            },
+            "body":
+            {
+                "text": "{\"appId\":\"1:251135229299:ios:20111a4b5fdfed44\",\"fid\":\"e1e96z9r1E52tT_jqNiNWG\",\"authVersion\":\"FIS_v2\",\"sdkVersion\":\"i:1.4.0\"}",
+                "charset": null
+            }
+        },
+        "response":
+        {
+            "status": -1,
+            "sizes":
+            {
+                "handshake": 22229,
+                "headers": 0,
+                "body": 79
+            },
+            "mimeType": null,
+            "charset": null,
+            "contentEncoding": null,
+            "header":
+            {
+                "firstLine": null,
+                "headers":
+                []
+            },
+            "body":
+            {
+                "encoding": "base64",
+                "encoded": "AAASBAAAAAAAAAMAAABkAAQAEAAAAAYAAQAAAAAECAAAAAAAAA8AAQAAHgcAAAAAAAAAAAAAAAABaHR0cDJfaGFuZHNoYWtlX2ZhaWxlZA=="
+            }
+        }
+    },
+    {
+        "status": "COMPLETE",
+        "method": "POST",
+        "protocolVersion": "HTTP/2.0",
+        "scheme": "https",
+        "host": "device-provisioning.googleapis.com",
+        "actualPort": 443,
+        "path": "/checkin",
+        "query": null,
+        "tunnel": false,
+        "keptAlive": false,
+        "webSocket": false,
+        "remoteAddress": "device-provisioning.googleapis.com/100.64.1.150",
+        "clientAddress": "/192.168.1.211",
+        "clientPort": 56693,
+        "times":
+        {
+            "start": "2025-05-07T15:08:21.970-05:00",
+            "requestBegin": "2025-05-07T15:08:21.978-05:00",
+            "requestComplete": "2025-05-07T15:08:21.986-05:00",
+            "responseBegin": "2025-05-07T15:08:22.151-05:00",
+            "end": "2025-05-07T15:08:22.159-05:00"
+        },
+        "durations":
+        {
+            "total": 737,
+            "dns": 151,
+            "connect": 5,
+            "ssl": 400,
+            "request": 8,
+            "response": 8,
+            "latency": 165
+        },
+        "speeds":
+        {
+            "overall": 34063,
+            "request": 209500,
+            "response": 2928625
+        },
+        "totalSize": 25105,
+        "ssl":
+        {
+            "protocol": "TLSv1.2",
+            "cipherSuite": "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256"
+        },
+        "alpn":
+        {
+            "protocol": "h2"
+        },
+        "request":
+        {
+            "sizes":
+            {
+                "handshake": 1299,
+                "headers": 125,
+                "body": 252
+            },
+            "mimeType": "application/json",
+            "charset": null,
+            "contentEncoding": null,
+            "header":
+            {
+                "headers":
+                [
+                    {
+                        "name": ":method",
+                        "value": "POST"
+                    },
+                    {
+                        "name": ":scheme",
+                        "value": "https"
+                    },
+                    {
+                        "name": ":path",
+                        "value": "/checkin"
+                    },
+                    {
+                        "name": ":authority",
+                        "value": "device-provisioning.googleapis.com"
+                    },
+                    {
+                        "name": "accept",
+                        "value": "*/*"
+                    },
+                    {
+                        "name": "content-type",
+                        "value": "application/json"
+                    },
+                    {
+                        "name": "accept-encoding",
+                        "value": "gzip, deflate, br"
+                    },
+                    {
+                        "name": "user-agent",
+                        "value": "ActiveHealth/668 CFNetwork/1568.100.1 Darwin/24.0.0"
+                    },
+                    {
+                        "name": "content-length",
+                        "value": "252"
+                    },
+                    {
+                        "name": "accept-language",
+                        "value": "en-US,en;q=0.9"
+                    }
+                ]
+            },
+            "body":
+            {
+                "text": "{\"locale\":\"en_US\",\"digest\":\"\",\"checkin\":{\"iosbuild\":{\"model\":\"iPhone13,4\",\"os_version\":\"IOS_18.0\"},\"last_checkin_msec\":0,\"user_number\":0,\"type\":2},\"time_zone\":\"America\\/Chicago\",\"user_serial_number\":0,\"id\":0,\"version\":2,\"security_token\":0,\"fragment\":0}",
+                "charset": null
+            }
+        },
+        "response":
+        {
+            "status": 200,
+            "sizes":
+            {
+                "handshake": 22229,
+                "headers": 652,
+                "body": 548
+            },
+            "mimeType": "application/json",
+            "charset": "utf-8",
+            "contentEncoding": "gzip",
+            "header":
+            {
+                "headers":
+                [
+                    {
+                        "name": ":status",
+                        "value": "200"
+                    },
+                    {
+                        "name": "content-type",
+                        "value": "application/json; charset=utf-8"
+                    },
+                    {
+                        "name": "x-content-type-options",
+                        "value": "nosniff"
+                    },
+                    {
+                        "name": "cache-control",
+                        "value": "no-cache, no-store, max-age=0, must-revalidate"
+                    },
+                    {
+                        "name": "pragma",
+                        "value": "no-cache"
+                    },
+                    {
+                        "name": "expires",
+                        "value": "Mon, 01 Jan 1990 00:00:00 GMT"
+                    },
+                    {
+                        "name": "date",
+                        "value": "Wed, 07 May 2025 20:08:22 GMT"
+                    },
+                    {
+                        "name": "permissions-policy",
+                        "value": "ch-ua-arch=*, ch-ua-bitness=*, ch-ua-full-version=*, ch-ua-full-version-list=*, ch-ua-model=*, ch-ua-wow64=*, ch-ua-form-factors=*, ch-ua-platform=*, ch-ua-platform-version=*"
+                    },
+                    {
+                        "name": "content-security-policy",
+                        "value": "require-trusted-types-for 'script';report-uri /checkin/_/AndroidCheckinHttp/cspreport"
+                    },
+                    {
+                        "name": "cross-origin-opener-policy",
+                        "value": "same-origin"
+                    },
+                    {
+                        "name": "accept-ch",
+                        "value": "Sec-CH-UA-Arch, Sec-CH-UA-Bitness, Sec-CH-UA-Full-Version, Sec-CH-UA-Full-Version-List, Sec-CH-UA-Model, Sec-CH-UA-WoW64, Sec-CH-UA-Form-Factors, Sec-CH-UA-Platform, Sec-CH-UA-Platform-Version"
+                    },
+                    {
+                        "name": "content-encoding",
+                        "value": "gzip"
+                    },
+                    {
+                        "name": "server",
+                        "value": "ESF"
+                    },
+                    {
+                        "name": "x-xss-protection",
+                        "value": "0"
+                    },
+                    {
+                        "name": "x-frame-options",
+                        "value": "SAMEORIGIN"
+                    },
+                    {
+                        "name": "alt-svc",
+                        "value": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"
+                    }
+                ]
+            },
+            "body":
+            {
+                "text": "{\"device_data_version_info\":\"ABFEt1UbwtyEeyRGZp0wIHKp7oddcnhZUzjMA7RfZWwr9DLNxdxd6-5WDN-5j51lYUtmDXHmtbUXkGTVEFUVKDzsmCi-uC9gh03NPc1whkg-W-ViagYWMXJvPTqF2-4lPIeDDaS9jV4W2YnRWz5bx0RIYK8bERQZVQQAr5W_rgMQ3Zv-xnaTstsO1OVTJyUsYAhvOazn8uS_3TyTEpATjDfPGQ4De4Kmdc1_vUZErf236MErUTY-NtFTezJQVyAFww_6xNSkLTT62Ua71HWatrgCcGEt5CMBtZHutGFSJId70ZTRu1qq7lI\",\"stats_ok\":true,\"security_token\":3538154283178444748,\"digest\":\"f6E8Sr6ZoyJ+pY8Hv8hbdg==\",\"time_msec\":1746648502133,\"version_info\":\"sxCFySJ-D84QoLPgN7e-uDAD99DFahk\",\"android_id\":4634011498939956932,\"setting\":[{\"name\":\"android_id\",\"value\":\"4634011498939956932\"},{\"name\":\"device_country\",\"value\":\"us\"},{\"name\":\"device_registration_time\",\"value\":\"1746648000000\"},{\"name\":\"ios_device\",\"value\":\"1\"}]}",
+                "charset": "utf-8",
+                "decoded": true
+            }
+        }
+    }
+]
