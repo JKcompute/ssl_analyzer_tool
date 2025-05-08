@@ -1,0 +1,38 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: SSL Analyzer Module",
+            "type": "python",
+            "request": "launch",
+            "module": "app.ssl_analyzer",
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}"
+            },
+            "args": ["${input:jsonFilePath}"]
+        },
+        {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}"
+            },
+            "args": ["${input:jsonFilePath}"]
+        }
+    ],
+    "inputs": [
+        {
+            "id": "jsonFilePath",
+            "type": "promptString",
+            "description": "Enter the path to the JSON file to analyze",
+            "default": "docs/input_files/sample_input.txt"
+        }
+    ]
+} 

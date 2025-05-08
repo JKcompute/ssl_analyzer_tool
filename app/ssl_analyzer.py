@@ -7,6 +7,7 @@ import argparse
 import os
 import time
 from concurrent.futures import ThreadPoolExecutor
+from app.models import CipherSuiteResponse, CipherSuiteEntry, CipherSuiteInfo
 
 class SSLAnalyzer:
     def __init__(self, cache_dir='.cache'):
@@ -34,11 +35,19 @@ class SSLAnalyzer:
         try:
             response = requests.get("https://ciphersuite.info/api/cs/")
             if response.status_code == 200:
-                data = response.json()
+                # Parse the response using our Pydantic model
+                cipher_suite_response = CipherSuiteResponse.model_validate(response.json())
+                
+                # Convert to a more easily accessible dictionary format
+                cipher_suite_dict = {}
+                for entry in cipher_suite_response.ciphersuites:
+                    for cipher_name, cipher_info in entry.root.items():
+                        cipher_suite_dict[cipher_name] = cipher_info.model_dump()
+                
                 # Cache the data
                 with open(cache_file, 'w') as f:
-                    json.dump({'timestamp': time.time(), 'data': data}, f)
-                return data
+                    json.dump({'timestamp': time.time(), 'data': cipher_suite_dict}, f)
+                return cipher_suite_dict
             return {}
         except requests.RequestException as e:
             print(f"Warning: Failed to fetch cipher suite data: {str(e)}")
@@ -47,10 +56,15 @@ class SSLAnalyzer:
     def load_json_data(self, filename):
         """Load JSON data from a file."""
         try:
+            print(f"Attempting to load file: {filename}")
+            print(f"Current working directory: {os.getcwd()}")
+            print(f"Absolute path of file: {os.path.abspath(filename)}")
+            
             with open(filename, 'r') as file:
                 return json.load(file)
         except (FileNotFoundError, json.JSONDecodeError) as e:
             print(f"Error loading JSON file: {e}")
+            print(f"File exists check: {os.path.exists(filename)}")
             sys.exit(1)
     
     def extract_unique_urls(self, json_data):
@@ -78,12 +92,13 @@ class SSLAnalyzer:
     
     def fetch_cipher_suite_info(self, cipher_suite):
         """Fetch detailed information about a cipher suite from cached data."""
-        # Convert cipher suite name to the format expected by the API
-        api_name = cipher_suite.replace('_', '-')
+        print(f"\nDebug: Looking up cipher suite:")
+        print(f"Cipher suite name: {cipher_suite}")
+        print(f"Found in cache: {cipher_suite in self.cipher_suite_data}")
         
-        # Look up the cipher suite in our cached data
-        if api_name in self.cipher_suite_data:
-            cs_data = self.cipher_suite_data[api_name]
+        # Look up the cipher suite in our cached data using original name
+        if cipher_suite in self.cipher_suite_data:
+            cs_data = self.cipher_suite_data[cipher_suite]
             details = {
                 'Key Exchange': cs_data.get('kex_algorithm', 'Unknown'),
                 'Authentication': cs_data.get('auth_algorithm', 'Unknown'),
@@ -94,6 +109,12 @@ class SSLAnalyzer:
             # Add human-readable descriptions
             details = self.add_human_readable_descriptions(details)
             return details
+        
+        # If not found, print some available cipher suites for debugging
+        print("\nAvailable cipher suites in cache:")
+        for cs in list(self.cipher_suite_data.keys())[:5]:  # Show first 5 for brevity
+            print(f"- {cs}")
+        print("...")
         
         return {'Error': f"Unable to find cipher suite details for {cipher_suite}"}
     
