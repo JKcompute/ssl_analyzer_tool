@@ -9,8 +9,10 @@
             "cwd": "${workspaceFolder}",
             "console": "integratedTerminal",
             "justMyCode": true,
+            "python": "${workspaceFolder}/app/venv/bin/python3",
             "env": {
-                "PYTHONPATH": "${workspaceFolder}"
+                "PYTHONPATH": "${workspaceFolder}",
+                "PATH": "${env:PATH}:${workspaceFolder}/app/venv/bin"
             },
             "args": ["${input:jsonFilePath}"]
         },
@@ -21,8 +23,10 @@
             "program": "${file}",
             "console": "integratedTerminal",
             "justMyCode": true,
+            "python": "${workspaceFolder}/app/venv/bin/python3",
             "env": {
-                "PYTHONPATH": "${workspaceFolder}"
+                "PYTHONPATH": "${workspaceFolder}",
+                "PATH": "${env:PATH}:${workspaceFolder}/app/venv/bin"
             },
             "args": ["${input:jsonFilePath}"]
         }

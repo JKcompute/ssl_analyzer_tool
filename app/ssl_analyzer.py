@@ -16,6 +16,21 @@ class SSLAnalyzer:
         if not os.path.exists(cache_dir):
             os.makedirs(cache_dir)
         self.cipher_suite_data = self.load_cipher_suite_data()
+        # Common asset file extensions to exclude
+        self.asset_extensions = {
+            # Images
+            '.png', '.jpg', '.jpeg', '.gif', '.bmp', '.webp', '.svg', '.ico',
+            # Documents
+            '.pdf', '.doc', '.docx', '.xls', '.xlsx', '.ppt', '.pptx',
+            # Archives
+            '.zip', '.rar', '.7z', '.tar', '.gz',
+            # Web assets
+            '.css', '.js', '.woff', '.woff2', '.ttf', '.eot',
+            # Media
+            '.mp3', '.mp4', '.avi', '.mov', '.wmv',
+            # Other common assets
+            '.xml', '.json', '.txt', '.csv', '.dat'
+        }
     
     def load_cipher_suite_data(self):
         """Load or fetch the complete cipher suite data."""
@@ -67,7 +82,11 @@ class SSLAnalyzer:
             print(f"File exists check: {os.path.exists(filename)}")
             sys.exit(1)
     
-    def extract_unique_urls(self, json_data):
+    def is_asset_file(self, path):
+        """Check if the given path is an asset file."""
+        return any(path.lower().endswith(ext) for ext in self.asset_extensions)
+    
+    def extract_unique_urls(self, json_data, include_assets=False):
         """Extract unique URLs with their SSL information."""
         unique_urls = {}
         
@@ -78,6 +97,11 @@ class SSLAnalyzer:
                 
             host = entry.get('host', '')
             path = entry.get('path', '')
+            
+            # Skip asset files unless explicitly included
+            if not include_assets and self.is_asset_file(path):
+                continue
+                
             url = f"{host}{path}"
             
             if url not in unique_urls:
@@ -203,18 +227,20 @@ class SSLAnalyzer:
         # Create formatted cipher suite details string
         cipher_details_str = ""
         if 'Error' not in cipher_details:
-            cipher_details_str = f"**Protocol:** {info['protocol']}\n"
-            cipher_details_str += f"**Key Exchange:** {cipher_details.get('Key Exchange', 'Unknown')}\n"
-            cipher_details_str += f"**Authentication:** {cipher_details.get('Authentication', 'Unknown')}\n"
+            details = []
+            details.append(f"Protocol: {info['protocol']}")
+            details.append(f"Key Exchange: {cipher_details.get('Key Exchange', 'Unknown')}")
+            details.append(f"Authentication: {cipher_details.get('Authentication', 'Unknown')}")
             
             # Add RSA warning if present
             if 'RSA Warning' in cipher_details:
-                cipher_details_str += f"**RSA Authentication:** {cipher_details['RSA Warning']}\n"
+                details.append(f"RSA Authentication: {cipher_details['RSA Warning']}")
                 
-            cipher_details_str += f"**Encryption:** {cipher_details.get('Encryption', 'Unknown')}\n"
-            cipher_details_str += f"**Hash:** {cipher_details.get('Hash', 'Unknown')}"
+            details.append(f"Encryption: {cipher_details.get('Encryption', 'Unknown')}")
+            details.append(f"Hash: {cipher_details.get('Hash', 'Unknown')}")
+            cipher_details_str = "\n".join(details)
         else:
-            cipher_details_str = f"**Protocol:** {info['protocol']}\n{cipher_details['Error']}"
+            cipher_details_str = f"Protocol: {info['protocol']}\n{cipher_details['Error']}"
         
         # Return formatted row
         return [
@@ -249,9 +275,10 @@ class SSLAnalyzer:
 def main():
     parser = argparse.ArgumentParser(description='Analyze SSL/TLS information in network traffic JSON files.')
     parser.add_argument('json_file', help='Path to the JSON file to analyze')
-    parser.add_argument('--export', choices=['json', 'csv'], help='Export results to specified format')
+    parser.add_argument('--export', choices=['json', 'csv', 'html', 'markdown'], help='Export results to specified format')
     parser.add_argument('--output', help='Output file name for export')
     parser.add_argument('--sequential', action='store_true', help='Use sequential processing instead of parallel')
+    parser.add_argument('--include-assets', action='store_true', help='Include asset files (images, CSS, JS, etc.) in the analysis')
     args = parser.parse_args()
     
     # Initialize SSL analyzer
@@ -261,7 +288,7 @@ def main():
     json_data = analyzer.load_json_data(args.json_file)
     
     # Extract unique URLs with SSL info
-    unique_urls = analyzer.extract_unique_urls(json_data)
+    unique_urls = analyzer.extract_unique_urls(json_data, include_assets=args.include_assets)
     
     if not unique_urls:
         print("No SSL/TLS connections found in the provided JSON file.")
@@ -277,6 +304,50 @@ def main():
             analyzer.export_to_json(table_data, output_file)
         elif args.export == 'csv':
             analyzer.export_to_csv(table_data, output_file)
+        elif args.export in ['html', 'markdown']:
+            with open(output_file, 'w') as f:
+                headers = ["URL (host+path)", "SSL Protocol", "Cipher Suite", "Detailed Information"]
+                if args.export == 'html':
+                    analyzer._is_html_output = True
+                    # Add some basic CSS to make the table more readable
+                    f.write("""<!DOCTYPE html>
+<html>
+<head>
+<style>
+    table { 
+        border-collapse: collapse; 
+        width: 100%; 
+        font-family: Arial, sans-serif;
+    }
+    th, td { 
+        border: 1px solid #ddd; 
+        padding: 8px; 
+        text-align: left; 
+        vertical-align: top;
+    }
+    th { 
+        background-color: #f2f2f2; 
+    }
+    tr:nth-child(even) { 
+        background-color: #f9f9f9; 
+    }
+    .details-cell {
+        white-space: pre-line;
+        line-height: 1.5;
+    }
+</style>
+</head>
+<body>
+""")
+                    # Convert the table data to HTML format
+                    html_table = tabulate(table_data, headers=headers, tablefmt="html")
+                    # Add the details-cell class to the last column
+                    html_table = html_table.replace('<td>', '<td class="details-cell">')
+                    f.write(html_table)
+                    f.write("</body></html>")
+                    analyzer._is_html_output = False
+                else:  # markdown
+                    f.write(tabulate(table_data, headers=headers, tablefmt="pipe"))
         print(f"Results exported to {output_file}")
     
     # Print table

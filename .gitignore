@@ -1,0 +1,9 @@
+app/venv/**
+
+app/__pycache__/**
+
+outputs/**
+
+docs/input_files/real/**
+
+docs/traces/**
